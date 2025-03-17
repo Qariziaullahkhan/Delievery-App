@@ -11,6 +11,7 @@ class MyButton extends StatelessWidget {
   final double? height;
   final double? width;
   final BorderRadius? borderRadius;
+  final BorderSide? side;
 
   const MyButton({
     super.key,
@@ -24,6 +25,7 @@ class MyButton extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadius,
+    this.side
   });
 
   @override
@@ -31,10 +33,11 @@ class MyButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor ?? Colors.blue, // Default color
+        backgroundColor: backgroundColor ?? Colors.white, // Default color
         minimumSize: Size(width ?? double.infinity, height ?? 45),
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius ?? BorderRadius.circular(8),
+          side: side ?? BorderSide.none
         ),
       ),
       child: Text(

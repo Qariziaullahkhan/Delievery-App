@@ -14,6 +14,7 @@ class IntroSplashScreen extends StatelessWidget {
     final SplashController splashController = Get.put(SplashController());
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 100, right: 137, top: 393),

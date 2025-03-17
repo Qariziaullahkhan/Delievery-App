@@ -11,18 +11,68 @@ class AppStyles {
   );
 
   static final TextStyle subheadingStyle1 = GoogleFonts.roboto(
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
+    fontSize: 24,
+    fontWeight: FontWeight.w800, // Use only one fontWeight value
     color: AppColors.primary,
+    letterSpacing: 0.5,
   );
-   static final TextStyle subheadingStyle2 = GoogleFonts.poppins(
+
+  static final TextStyle subheadingStyle2 = GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.w600,
     color: AppColors.primary,
   );
+  static final TextStyle subheadingvalues = GoogleFonts.roboto(
+    fontSize: 24,
+    fontWeight: FontWeight.w800, // Use only one fontWeight value
+    color: AppColors.secondry,
+  );
+  static final TextStyle subheadingstylelorem = GoogleFonts.roboto(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primary,
+  );
   static final TextStyle bodyStyle = GoogleFonts.poppins(
     fontSize: 14,
-    fontWeight: FontWeight.normal,
-    color: Colors.black54,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primary,
+  );
+    static final TextStyle bodyStyle5 = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primary,
+  );
+   static final TextStyle bodyStye2 = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: AppColors.secondry,
+  );
+   static final TextStyle bodyStye4 = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: AppColors.secondry,
+    
+  );
+   static final TextStyle bodyStye3 = GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.secondry,
+  );
+  static final TextStyle subheadingstyle3 = GoogleFonts.poppins(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primary,
+  );
+    static final TextStyle subheadingstyle4 = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    decoration: TextDecoration.underline,
+    // backgroundColor: AppColors.secondry,
+    
+  );
+   static final TextStyle bodystles1 = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.grey,
   );
 }

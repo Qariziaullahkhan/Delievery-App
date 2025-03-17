@@ -1,9 +1,12 @@
 import 'package:delievery_app/core/app_strings.dart';
 import 'package:delievery_app/core/routes.dart';
+import 'package:delievery_app/domain/controllers/password_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+      Get.put(PasswordController()); // Yeh zaroori hai
+
   runApp(const MyApp());
 }
 

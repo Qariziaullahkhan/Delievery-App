@@ -2,12 +2,9 @@ import 'package:delievery_app/core/routes.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
-
+  // Define isAnimationPlaying as a reactive variable
   var isAnimationPlaying = true.obs;
 
-  void toggleAnimation() {
-    isAnimationPlaying.value = !isAnimationPlaying.value;
-  }
   @override
   void onInit() {
     super.onInit();
@@ -15,10 +12,10 @@ class SplashController extends GetxController {
   }
 
   void navigateToNextScreens() async {
-    await Future.delayed(Duration(seconds: 2));
-    Get.offNamed(AppRoutes.splash); // Navigate to second splash screen
+    await Future.delayed(Duration(seconds: 2)); 
+    Get.offNamed(AppRoutes.splash); // Navigate to Main SplashScreen
 
-    await Future.delayed(Duration(seconds: 2));
-    Get.offNamed(AppRoutes.login); // Navigate to home screen
+    await Future.delayed(Duration(seconds: 2)); 
+    Get.offNamed(AppRoutes.login); // Navigate to Login Screen
   }
 }
