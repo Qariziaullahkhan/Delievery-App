@@ -16,6 +16,7 @@ class Constants {
   static const String haventresendcoded = "Haven’t received the OTP code yet??";
   static const String signup = "Sign up";
   static const String forgotpassword = "Forgot password?";
+  static const String chat = "Messages";
   static const String resend = "Resend";
   static const String search = "Search";
   static const String home = "Home";

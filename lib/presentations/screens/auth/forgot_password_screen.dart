@@ -1,7 +1,6 @@
 import 'package:delievery_app/core/app_colors.dart';
 import 'package:delievery_app/core/app_strings.dart';
 import 'package:delievery_app/core/app_styles.dart';
-import 'package:delievery_app/presentations/screens/auth/registeremail_screen.dart';
 import 'package:delievery_app/presentations/widgets/custom_button.dart';
 import 'package:delievery_app/presentations/widgets/custom_textfield.dart';
 import 'package:delievery_app/presentations/widgets/my_size.dart';
@@ -105,7 +104,6 @@ class ForgotPasswordScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Get.to(() => const RegisteremailScreen());
                         },
                       ),
                     ),
