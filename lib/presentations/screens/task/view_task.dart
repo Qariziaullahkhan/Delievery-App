@@ -209,6 +209,7 @@ class ViewTask extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
                       leading: CircleAvatar(
@@ -262,7 +263,7 @@ class ViewTask extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: GoogleFonts.inter(
                                 fontSize: 14,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
@@ -272,7 +273,7 @@ class ViewTask extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: GoogleFonts.inter(
                                 fontSize: 14,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
@@ -282,7 +283,7 @@ class ViewTask extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: GoogleFonts.inter(
                                 fontSize: 14,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
@@ -291,60 +292,85 @@ class ViewTask extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 8),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Pick-up Location : ',
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.inter(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          SizedBox(width: 5), // Space between text and icon
-                          Icon(Icons.location_on,
-                              color: Colors.amber, size: 16),
-                          SizedBox(width: 5), // Space between icon and address
-                          Expanded(
-                            child: Text(
-                              'Street 21, New York, USA',
-                              textAlign: TextAlign.center,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Pick-up Location : ',
+                              textAlign: TextAlign.left,
                               style: GoogleFonts.inter(
                                 fontSize: 14,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                            SizedBox(width: 5), // Space between text and icon
+                            Icon(Icons.location_on,
+                                color: AppColors.primary, size: 16),
+                            SizedBox(
+                                width: 5), // Space between icon and address
+                            Expanded(
+                              child: Text(
+                                'Street 21, New York, USA',
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Delivery Location : ',
-                        style: GoogleFonts.inter(
-                            fontSize: 12, fontWeight: FontWeight.w400),
-                      ),
-                      Icon(Icons.location_on, color: Colors.amber),
-                      Text(
-                        'Street 21, New York, USA',
-                        style: GoogleFonts.inter(
-                            fontSize: 12, fontWeight: FontWeight.w400),
-                      ),
-                    ],
+                  MySize(
+                    height: Responsive.height(0.02),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12,right: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Delivery Location : ',
+                          style: GoogleFonts.poppins(
+                              color: AppColors.secondry,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        Icon(
+                          Icons.location_on,
+                            color: AppColors.secondry,
+                        ),
+                        Text(
+                          'Street 21, New York, USA',
+                          style: GoogleFonts.inter(
+                              color: AppColors.secondry,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                  ),
+                  MySize(height: Responsive.height(0.02),),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: MyText(text: "Parcel Image",style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.grey,
+                    ),),
+                  )
                 ],
               ),
             ),
             MySize(
-              height: 20,
+              height: Responsive.height(0.02),
             ),
             Container(
               margin: const EdgeInsets.only(left: 16, right: 16),
