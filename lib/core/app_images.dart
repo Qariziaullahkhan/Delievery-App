@@ -15,4 +15,5 @@ class AppImages {
  static const String viewtask = 'assets/images/viewtask.png';
  static const String post = 'assets/images/post.png';
  static const String chat = 'assets/images/chat.png';
+ static const String  notification = 'assets/images/notification.png';
 }

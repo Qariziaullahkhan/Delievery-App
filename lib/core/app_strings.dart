@@ -7,6 +7,7 @@ class Constants {
   static const String recoverpassword = "Recover password";
   static const String verifynumber = "Verify Phone  Number";
   static const String delivered = "Delivered";
+  static const String deliveredrequest = "Delivery Request";
   static const String verifieduser = "Verified Users";
   static const String deliveredby = "Delivered by";
   static const String dontHaveAccount = "Don't have an account?";

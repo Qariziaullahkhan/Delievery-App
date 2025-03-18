@@ -23,6 +23,9 @@ class IntroSplashScreen extends StatelessWidget {
               style: AppStyles.headingStyle,
             ),
           ),
+          
+
+
         ],
       ),
     );

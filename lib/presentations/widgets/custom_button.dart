@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -42,7 +43,7 @@ class MyButton extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(
+        style: GoogleFonts.poppins(
           fontSize: fontSize ?? 16,
           fontWeight: fontWeight ?? FontWeight.w700,
           fontStyle: fontStyle ?? FontStyle.normal,

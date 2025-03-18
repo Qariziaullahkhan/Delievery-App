@@ -31,9 +31,9 @@ class LoginScreen extends StatelessWidget {
                 bottom: 0, // Moves image to the bottom
                 left: -73,
                 right: 0,
-                top: 650,
+                top: 600,
                 child: Image.asset(
-                  'assets/images/bgimage.png', // Background Image
+                  'assets/images/bgimage.png',
                   fit: BoxFit.cover,
                   height: 232, // Adjust the height as needed
                 ),
