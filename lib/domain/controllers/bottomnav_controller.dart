@@ -11,7 +11,7 @@ class BottomNavController extends GetxController {
   var currentIndex = 0.obs;
   final screens = [
     const HomeScreen(),
-     const ViewTask(),
+      ViewTask(),
     const MyTask(),
     const PostScreen(),
     const ChatScreen(),

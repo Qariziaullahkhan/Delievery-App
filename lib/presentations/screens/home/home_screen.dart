@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
     final BottomNavController controller = Get.put(BottomNavController());
 
     final List<Widget> screens = [
-      const ViewTask(),
+       ViewTask(),
       const MyTask(),
       const PostScreen(),
       const ChatScreen(),
