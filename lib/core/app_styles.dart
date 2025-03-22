@@ -42,9 +42,24 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.primary,
   );
-   static final TextStyle bodyStye2 = GoogleFonts.poppins(
+  static final TextStyle bodyStyle6 = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.grey,
+  );
+   static final TextStyle bodyStyle7 = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primary,
+  );
+  static final TextStyle bodyStye2 = GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w700,
+    color: AppColors.secondry,
+  );
+   static final TextStyle bodyStye8 = GoogleFonts.poppins(
+    fontSize: 10,
+    fontWeight: FontWeight.w600,
     color: AppColors.secondry,
   );
    static final TextStyle bodyStye4 = GoogleFonts.poppins(

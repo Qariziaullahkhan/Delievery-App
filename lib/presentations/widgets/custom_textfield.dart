@@ -1,3 +1,4 @@
+import 'package:delievery_app/core/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -51,7 +52,7 @@ class MyTextField extends StatelessWidget {
         textInputAction: textInputAction ?? TextInputAction.done,
         decoration: InputDecoration(
           prefixIcon: prefixIcon != null
-              ? Icon(prefixIcon, color: borderColor ?? Colors.blue)
+              ? Icon(prefixIcon, color: borderColor ?? AppColors.secondry)
               : null,
           suffixIcon: suffixIcon != null
               ? Icon(suffixIcon, color: borderColor ?? Colors.blue)

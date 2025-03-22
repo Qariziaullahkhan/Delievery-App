@@ -1,13 +1,18 @@
 import 'package:delievery_app/core/app_images.dart';
 import 'package:delievery_app/core/app_strings.dart';
+import 'package:delievery_app/core/app_styles.dart';
 import 'package:delievery_app/domain/controllers/filter_controller.dart';
+import 'package:delievery_app/presentations/screens/profile/profile.dart';
+import 'package:delievery_app/presentations/widgets/custom_button.dart';
 import 'package:delievery_app/presentations/widgets/custom_card.dart';
+import 'package:delievery_app/presentations/widgets/custom_textfield.dart';
 import 'package:delievery_app/presentations/widgets/my_text.dart';
 import 'package:flutter/material.dart';
 import 'package:delievery_app/core/app_colors.dart';
 import 'package:delievery_app/presentations/widgets/my_size.dart';
 import 'package:delievery_app/presentations/widgets/searchfield.dart';
 import 'package:delievery_app/utils/responsive.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -65,7 +70,7 @@ class ViewTask extends StatelessWidget {
           // Fixed Content (Top Section)
           Container(
             width: double.infinity,
-            height: 184,
+            height: Responsive.height(0.3),
             decoration: BoxDecoration(
               color: AppColors.primary,
               borderRadius: const BorderRadius.only(
@@ -86,10 +91,14 @@ class ViewTask extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Profile Image
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundImage: AssetImage(
-                            AppImages.profile), // Change to your asset path
+                      InkWell(
+                        onTap: () => Get.to(() => const ProfileScreen()),
+                        child: CircleAvatar(
+                          
+                          radius: 20,
+                          backgroundImage: AssetImage(
+                              AppImages.profile), // Change to your asset path
+                        ),
                       ),
 
                       // Text
@@ -109,7 +118,6 @@ class ViewTask extends StatelessWidget {
                             icon: const Icon(Icons.notifications,
                                 color: AppColors.secondry, size: 24),
                             onPressed: () {
-                              print("Notification Clicked");
                             },
                           ),
                           Positioned(
@@ -151,14 +159,12 @@ class ViewTask extends StatelessWidget {
                         textColor: Colors.white,
                         hintText: "Search",
                         onTap: () {
-                          print("Search Field Clicked");
                         },
                       ),
                       MySize(width: 10),
                       // 🔲 Filter Button
                       GestureDetector(
                         onTap: () {
-                          print("hi");
                           Get.dialog(
                             _buildPopupContainer(), // Use the custom popup container
                           );
@@ -275,19 +281,22 @@ class ViewTask extends StatelessWidget {
 }
 
 Widget _buildPopupContainer() {
-  return Container(
-    margin: const EdgeInsets.only(left: 16, right: 16, top: 110),
-    width: Responsive.width(0.3), // 80% of screen width
-    height: Responsive.height(0.01), //530
-    decoration: BoxDecoration(
-      color: AppColors.white,
-      borderRadius: BorderRadius.circular(20),
-    ),
-    child: Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
-          child: Align(
+  return Material(
+    color: Colors.transparent, // To keep the background unchanged
+    child: Container(
+      margin: const EdgeInsets.only(left: 16, right: 16, top: 110),
+      width: Responsive.width(0.3), // 30% of screen width
+      height: Responsive.height(0.6), // Adjust height as needed
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            child: Align(
               alignment: Alignment.center,
               child: MyText(
                 text: "Filter",
@@ -296,12 +305,152 @@ Widget _buildPopupContainer() {
                   fontWeight: FontWeight.w600,
                   color: AppColors.primary,
                 ),
-              )),
-        ),
-        SizedBox(height: 24),
-       
-        // Popup content
-      ],
+              ),
+            ),
+          ),
+          MySize(height: 24), // Space between text and text field
+          SizedBox(
+            width: double.infinity, // Ensures full width if needed
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: MyText(
+                text: "Delivery Date",
+                style: AppStyles.bodyStyle6,
+              ),
+            ),
+          ),
+          MySize(height: 20), // Space between text and text field
+          Padding(
+            padding: const EdgeInsets.only(left: 16,right: 16),
+            child: SizedBox(
+              width: double.infinity, // Ensures full width if needed
+              child: MyTextField(
+                controller: TextEditingController(),
+                prefixIcon: Icons.calendar_month,
+                hintText: 'DD - MM - YYYY',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please select a date';
+                  }
+                  return null;
+                },
+              ),
+            ),
+          ),
+          MySize(height: 16),
+
+          //pickuplocation
+          SizedBox(
+            width: double.infinity, // Ensures full width if needed
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: MyText(
+                text: "Pickup Location",
+                style: AppStyles.bodyStyle6,
+              ),
+            ),
+          ),
+          MySize(height: 20), // Space between text and text field
+          Padding(
+            padding: const EdgeInsets.only(left: 16,right: 16),
+            child: SizedBox(
+              width: double.infinity, // Ensures full width if needed
+              child: MyTextField(
+                controller: TextEditingController(),
+                prefixIcon: Icons.location_on,
+                hintText: 'Street 21, New York USA',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please select a Pickup Location';
+                  }
+                  return null;
+                },
+              ),
+            ),
+          ),
+          MySize(height: 16),
+          //deliverylocation
+          SizedBox(
+            width: double.infinity, // Ensures full width if needed
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: MyText(
+                text: "Delivery Location",
+                style: AppStyles.bodyStyle6,
+              ),
+            ),
+          ),
+          MySize(height: 20), // Space between text and text field
+          Padding(
+            padding: const EdgeInsets.only(left: 16,right: 16),
+            child: SizedBox(
+              width: double.infinity, // Ensures full width if needed
+              child: MyTextField(
+                controller: TextEditingController(),
+                prefixIcon: Icons.location_on,
+                hintText: 'Street 22, New York USA',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please select a Delivery Location';
+                  }
+                  return null;
+                },
+              ),
+            ),
+          ),
+          MySize(height: 16),
+          SizedBox(
+            width: double.infinity, // Ensures full width if needed
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: MyText(
+                    text: "Task Poster Rating",
+                    style: AppStyles.bodyStyle6,
+                  ),
+                ),
+                SizedBox(height: 8), // Space between text and rating bar
+                Padding(
+                  padding: const EdgeInsets.only(left: 50),
+                  child: SizedBox(
+                    width: double.infinity, // Ensures full width if needed
+                    child: RatingBar.builder(
+                      initialRating: 3, // Set initial rating
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true, // Allows half stars
+                      itemCount: 5,
+                      itemSize: 30, // Adjust star size
+                      itemPadding: EdgeInsets.symmetric(horizontal: 6.0),
+                      itemBuilder: (context, _) => Icon(
+                        Icons.star,
+                        color: AppColors.secondry, // Star color
+                      ),
+                      onRatingUpdate: (rating) {},
+                    ),
+                  ),
+                ),
+                MySize(height: 16),
+                //buttons make an offer
+
+                Center(
+                  child: MyButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    width: 160,
+                    height: 40,
+                    backgroundColor: AppColors.primary,
+                    text: Constants.applyfilter,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
