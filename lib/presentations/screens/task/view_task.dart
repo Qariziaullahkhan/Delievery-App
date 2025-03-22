@@ -3,6 +3,7 @@ import 'package:delievery_app/core/app_strings.dart';
 import 'package:delievery_app/core/app_styles.dart';
 import 'package:delievery_app/domain/controllers/filter_controller.dart';
 import 'package:delievery_app/presentations/screens/profile/profile.dart';
+import 'package:delievery_app/presentations/screens/setting/notification.dart';
 import 'package:delievery_app/presentations/widgets/custom_button.dart';
 import 'package:delievery_app/presentations/widgets/custom_card.dart';
 import 'package:delievery_app/presentations/widgets/custom_textfield.dart';
@@ -118,6 +119,7 @@ class ViewTask extends StatelessWidget {
                             icon: const Icon(Icons.notifications,
                                 color: AppColors.secondry, size: 24),
                             onPressed: () {
+                              Get.to(() => const NotificationScreen());
                             },
                           ),
                           Positioned(

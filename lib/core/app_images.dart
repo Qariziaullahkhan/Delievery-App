@@ -16,4 +16,5 @@ class AppImages {
  static const String post = 'assets/images/post.png';
  static const String chat = 'assets/images/chat.png';
  static const String  notification = 'assets/images/notification.png';
+ static const String profile1 = 'assets/images/profile1.jpeg';
 }
