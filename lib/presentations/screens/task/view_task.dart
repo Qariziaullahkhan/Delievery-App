@@ -20,7 +20,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ViewTask extends StatelessWidget {
   final List<String> images = [
     "assets/images/cat.png",
-    "assets/images/cat2.jpeg",
+    "assets/images/cat1.jpeg",
     "assets/images/cat2.jpeg",
   ];
   final List<Map<String, dynamic>> cardData = [
@@ -36,7 +36,7 @@ class ViewTask extends StatelessWidget {
       "deliveryLocation": "Street 21, New York, USA",
       "images": [
         "assets/images/cat.png",
-        "assets/images/car1.jpeg",
+        "assets/images/cat1.jpeg",
         "assets/images/cat2.jpeg",
       ],
     },

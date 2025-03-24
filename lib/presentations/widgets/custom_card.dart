@@ -1,9 +1,11 @@
 import 'package:delievery_app/core/app_colors.dart';
 import 'package:delievery_app/core/app_images.dart';
+import 'package:delievery_app/presentations/screens/task/offer.dart';
 import 'package:delievery_app/presentations/widgets/custom_button.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider_plus/carousel_slider_plus.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
@@ -254,7 +256,9 @@ class CustomCard extends StatelessWidget {
           ),
           SizedBox(height: 10),
           MyButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => Offer());
+              },
               width: 160,
               height: 40,
               backgroundColor: AppColors.primary,

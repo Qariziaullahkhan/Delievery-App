@@ -52,6 +52,16 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.primary,
   );
+   static final TextStyle bodyStyle8 = GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primary,
+  );
+   static final TextStyle bodyStyle9 = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primary,
+  );
   static final TextStyle bodyStye2 = GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w700,
