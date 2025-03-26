@@ -2,6 +2,7 @@ import 'package:delievery_app/core/app_colors.dart';
 import 'package:delievery_app/core/app_images.dart';
 import 'package:delievery_app/core/app_strings.dart';
 import 'package:delievery_app/core/app_styles.dart';
+import 'package:delievery_app/presentations/screens/home/home_screen.dart';
 import 'package:delievery_app/presentations/widgets/custom_appbar.dart';
 import 'package:delievery_app/presentations/widgets/custom_button.dart';
 import 'package:delievery_app/presentations/widgets/my_size.dart';
@@ -17,9 +18,13 @@ class Submitt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppbar(
+        text: Constants.submit,
+        onTap: () {},
+        height: 110,
+      ),
       body: Column(
         children: [
-          CustomAppbar(text: Constants.submit, onTap: () {}),
           MySize(height: 24),
           ListTile(
             leading: CircleAvatar(
@@ -101,68 +106,35 @@ class Submitt extends StatelessWidget {
     );
   }
 }
+
 Widget _buildPopupContainer() {
-  return Material(
-    color: Colors.transparent,
+  return Dialog(
+    insetPadding: EdgeInsets.only(top: Responsive.fontSize(0.1)),
     child: Container(
-      margin: const EdgeInsets.only(left: 16, right: 16, top: 110),
-      width: Responsive.width(0.3),
-      height: Responsive.height(0.1),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(20),
+      padding: EdgeInsets.all(20),
+      constraints: BoxConstraints(
+        minHeight: Responsive.height(0.25), // Set minimum height
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment:
+            MainAxisAlignment.spaceBetween, // This pushes button to bottom
         children: [
-          // ... [Keep all your existing widgets] ...
-          
-          // Modified Button with GetX dialog
-          Center(
-            child: MyButton(
-              onPressed: () {
-                Get.dialog(
-                  AlertDialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(
-                          Icons.check_circle,
-                          color: Colors.green,
-                          size: 60,
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          "Your offer is submitted successfully",
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 24),
-                        SizedBox(
-                          width: double.infinity,
-                          child: MyButton(
-                            onPressed: () => Get.back(), // Close dialog
-                            backgroundColor: AppColors.primary,
-                            text: "Okay",
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  barrierDismissible: false, // User must tap Okay
-                );
-              },
-              width: Responsive.width(0.5),
-              height: Responsive.height(0.07),
-              backgroundColor: AppColors.primary,
-              text: Constants.continues,
+          Text(
+            'Your submission has been received successfully!',
+            style: GoogleFonts.poppins(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
             ),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 20), // Optional spacing
+          MyButton(
+            width: Responsive.width(0.4), //responsive for width 125
+            height: Responsive.height(0.05), //responsive for height 40
+            backgroundColor: AppColors.primary,
+            text: Constants.okay,
+            onPressed: () => Get.to(() => HomeScreen()),
           ),
         ],
       ),

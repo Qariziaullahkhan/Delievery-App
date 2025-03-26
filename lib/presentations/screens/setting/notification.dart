@@ -11,10 +11,14 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:  CustomAppbar(
+        text: Constants.notifications,
+        onTap: () => Get.back(),
+        height: 100, // Custom height as needed
+      ),
       body: Column(
         children: [
           // Custom App Bar
-        CustomAppbar(text: Constants.notifications, onTap: () => Get.back()),
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),

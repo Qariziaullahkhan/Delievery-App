@@ -13,44 +13,50 @@ class TermsCondition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppbar(
+        text: Constants.terms,
+        onTap: () => Get.back(),
+        height: 110,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomAppbar(text: Constants.terms, onTap: ()=>Get.back()),
-             const MySize(height: 24),
-              SizedBox(
-                width: Responsive.width(0.9),
-                height: Responsive.height(0.5),
-                
-                child: Expanded(
-                  child: Text(
-                    Constants.lorem1,
-                    style: GoogleFonts.poppins(
-                      fontSize: 12, // Adjust font size
-                      color: AppColors.primary, // Text color
-                      fontWeight: FontWeight.w600, // Font weight
-                    ),
-                    textAlign: TextAlign.justify, // Justify text for better alignment
+            const MySize(height: 24),
+            SizedBox(
+              width: Responsive.width(0.9),
+              height: Responsive.height(0.5),
+              child: Expanded(
+                child: Text(
+                  Constants.lorem1,
+                  style: GoogleFonts.poppins(
+                    fontSize: 12, // Adjust font size
+                    color: AppColors.primary, // Text color
+                    fontWeight: FontWeight.w600, // Font weight
                   ),
+                  textAlign:
+                      TextAlign.justify, // Justify text for better alignment
                 ),
               ),
-              MySize(height: 16,),
-               SizedBox(
-                width: Responsive.width(0.9),
-                height: Responsive.height(0.5),
-                
-                child: Expanded(
-                  child: Text(
-                    Constants.lorem1,
-                    style: GoogleFonts.poppins(
-                      fontSize: 12, // Adjust font size
-                      color: AppColors.primary, // Text color
-                      fontWeight: FontWeight.w600, // Font weight
-                    ),
-                    textAlign: TextAlign.justify, // Justify text for better alignment
+            ),
+            MySize(
+              height: 16,
+            ),
+            SizedBox(
+              width: Responsive.width(0.9),
+              height: Responsive.height(0.5),
+              child: Expanded(
+                child: Text(
+                  Constants.lorem1,
+                  style: GoogleFonts.poppins(
+                    fontSize: 12, // Adjust font size
+                    color: AppColors.primary, // Text color
+                    fontWeight: FontWeight.w600, // Font weight
                   ),
+                  textAlign:
+                      TextAlign.justify, // Justify text for better alignment
                 ),
               ),
+            ),
           ],
         ),
       ),

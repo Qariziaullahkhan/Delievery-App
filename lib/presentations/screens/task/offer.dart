@@ -26,11 +26,13 @@ class Offer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppbar(text: Constants.offer, onTap: () => Get.back(),
+      height: 110,
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomAppbar(text: Constants.offer, onTap: () => Get.back()),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -167,7 +169,6 @@ class Offer extends StatelessWidget {
                             text: Constants.makeoffer,
                             onPressed: () {
                               Get.dialog(_buildPopupContainer());
-
                             },
                           ),
                           //text
@@ -291,7 +292,7 @@ class Offer extends StatelessWidget {
 
               // Text Field with "Add your comment" hint
               Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16),
+                padding: const EdgeInsets.only(left: 16, right: 16),
                 child: SizedBox(
                   child: TextField(
                     decoration: InputDecoration(
@@ -319,13 +320,15 @@ class Offer extends StatelessWidget {
                   ),
                 ),
               ),
-            MySize(height: Responsive.height(0.02),),
+              MySize(
+                height: Responsive.height(0.02),
+              ),
               //buttons make an offer
 
               Center(
                 child: MyButton(
                   onPressed: () {
-                              Get.to(() => const Submitt());
+                    Get.to(() => const Submitt());
                   },
                   width: Responsive.width(0.5),
                   height: Responsive.height(0.07),

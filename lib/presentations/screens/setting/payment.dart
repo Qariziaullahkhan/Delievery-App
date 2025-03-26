@@ -17,13 +17,15 @@ class PaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppbar(
+        text: Constants.paymentmethod,
+        onTap: () => Get.back(),
+        height: 110,
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomAppbar(
-                text: Constants.paymentmethod, onTap: () => Get.back()),
-
             const SizedBox(height: 20),
             Text(
               "Card Number", // Label for the dropdown
@@ -247,53 +249,56 @@ Widget _buildPopupContainer() {
           ),
 
           MySize(height: Responsive.height(0.02)),
-          // to create me large textfield 
+          // to create me large textfield
 
-         SizedBox(
-  width: double.infinity, // Ensures full width
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.center, // Center align the text
-    children: [
-      // "Add Comment" Text (Centered)
-      MyText(
-        text: "Add Comment",
-        style: GoogleFonts.poppins(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: AppColors.grey,
-        ),
-      ),
+          SizedBox(
+            width: double.infinity, // Ensures full width
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.center, // Center align the text
+              children: [
+                // "Add Comment" Text (Centered)
+                MyText(
+                  text: "Add Comment",
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.grey,
+                  ),
+                ),
 
-      // Spacing
-      MySize(height: Responsive.height(0.02)),
+                // Spacing
+                MySize(height: Responsive.height(0.02)),
 
-      // TextField Container
-      Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: AppColors.white,
-            border: Border.all(
-              color: AppColors.primary,
-              width: 1,
+                // TextField Container
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColors.white,
+                      border: Border.all(
+                        color: AppColors.primary,
+                        width: 1,
+                      ),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Write your review here",
+                        hintStyle:
+                            GoogleFonts.poppins(color: AppColors.primary),
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.all(
+                            12), // Add padding inside TextField
+                      ),
+                      maxLines: 5,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: "Write your review here",
-              hintStyle: GoogleFonts.poppins(color: AppColors.primary),
-              border: InputBorder.none,
-              contentPadding: const EdgeInsets.all(12), // Add padding inside TextField
-            ),
-            maxLines: 5,
-          ),
-        ),
-      ),
-    ],
-  ),
-),
           MySize(height: Responsive.height(0.05)),
           //buttons make an offer
 

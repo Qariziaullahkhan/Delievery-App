@@ -22,9 +22,13 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:  CustomAppbar(
+        text: Constants.profile,
+        onTap: () => Get.back(),
+        height: 110, // Custom height as needed
+      ),
       body: Column(
         children: [
-         CustomAppbar(text: Constants.profile, onTap: () => Get.back()),
           ListTile(
             leading: CircleAvatar(
               backgroundImage: AssetImage(AppImages.profile),

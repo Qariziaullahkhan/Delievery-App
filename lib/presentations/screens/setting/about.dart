@@ -13,10 +13,14 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppbar(
+        text: Constants.aboutsupport,
+        onTap: () => Get.back(),
+        height: 110,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomAppbar(text: Constants.aboutsupport, onTap: () => Get.back()),
             const MySize(height: 24),
             SizedBox(
               width: Responsive.width(0.9),
