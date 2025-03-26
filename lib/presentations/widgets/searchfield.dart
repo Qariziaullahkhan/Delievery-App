@@ -8,6 +8,7 @@ class SearchField extends StatelessWidget {
   final Color borderColor;
   final Color textColor;
   final String hintText;
+  final Color? searchcolor;
   final VoidCallback? onTap;
 
   const SearchField({
@@ -17,6 +18,7 @@ class SearchField extends StatelessWidget {
     required this.borderColor,
     required this.textColor,
     required this.hintText,
+    this.searchcolor,
     this.onTap,
   });
 
@@ -27,7 +29,7 @@ class SearchField extends StatelessWidget {
         height: 44,
         width: 53,
         decoration: BoxDecoration(
-          color: Color(0xFF393939), // Background color remains the same
+                color: searchcolor ?? AppColors.searchcolor, // Gray border color instead of white
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
@@ -43,19 +45,19 @@ class SearchField extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Color(0xFF393939), // Gray border color instead of white
+                color: searchcolor ?? AppColors.searchcolor, // Gray border color instead of white
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: Color(0xFF393939), // Same as above
+                color: searchcolor ?? AppColors.searchcolor, // Gray border color instead of white
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: Color(0xFF393939), // When focused, same border
+                color: searchcolor ?? AppColors.searchcolor, // Gray border color instead of white
               ),
             ),
             prefixIcon: Icon(

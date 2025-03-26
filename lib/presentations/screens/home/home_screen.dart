@@ -2,7 +2,7 @@ import 'package:delievery_app/core/app_colors.dart';
 import 'package:delievery_app/core/app_images.dart';
 import 'package:delievery_app/core/app_strings.dart';
 import 'package:delievery_app/domain/controllers/bottomnav_controller.dart';
-import 'package:delievery_app/presentations/screens/chat/chat.dart';
+import 'package:delievery_app/presentations/screens/chat/message.dart';
 import 'package:delievery_app/presentations/screens/post/post.dart';
 import 'package:delievery_app/presentations/screens/task/view_task.dart';
 import 'package:delievery_app/presentations/screens/task/my_task.dart';
@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
       ViewTask(),
       const MyTask(),
       const PostScreen(),
-      const ChatScreen(),
+      const MessageScreen(),
     ];
 
     return Scaffold(

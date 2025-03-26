@@ -179,7 +179,7 @@ class ViewTask extends StatelessWidget {
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: const Icon(Icons.filter_list,
-                              color: Colors.white, size: 20),
+                              color: AppColors.secondry, size: 20),
                         ),
                       ),
                     ],

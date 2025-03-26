@@ -1,5 +1,5 @@
 
-import 'package:delievery_app/presentations/screens/chat/chat.dart';
+import 'package:delievery_app/presentations/screens/chat/message.dart';
 import 'package:delievery_app/presentations/screens/home/home_screen.dart';
 import 'package:delievery_app/presentations/screens/post/post.dart';
 import 'package:delievery_app/presentations/screens/task/view_task.dart';
@@ -14,7 +14,7 @@ class BottomNavController extends GetxController {
       ViewTask(),
     const MyTask(),
     const PostScreen(),
-    const ChatScreen(),
+    const MessageScreen(),
   ];
 
   void changeTab(int index) {

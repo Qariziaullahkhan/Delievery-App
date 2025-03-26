@@ -22,8 +22,8 @@ class PostScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppbar(
         text: Constants.post,
-        onTap: () => Get.off(() =>  HomeScreen()
-        ),
+         onTap: () => Get.offAll(() => HomeScreen()),
+
         height: 110,
       ),
       body: SingleChildScrollView(
