@@ -6,7 +6,6 @@ import 'package:delievery_app/presentations/widgets/custom_appbar.dart';
 import 'package:delievery_app/presentations/widgets/searchfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MessageScreen extends StatelessWidget {
@@ -16,19 +15,20 @@ class MessageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> messages = [
       {"name": "Adolf Benzema", "image": AppImages.profile1, "unread": 5},
-      {"name": "Talent Lodge", "image": AppImages.profile1, "unread": 5},
-      {"name": "Aapeli Abbe", "image": AppImages.profile1, "unread": 0},
-      {"name": "Albert", "image": AppImages.profile1, "unread": 0},
-      {"name": "Harry Brook", "image": AppImages.profile1, "unread": 0},
-      {"name": "Jimmy Neasham", "image": AppImages.profile1, "unread": 0},
-      {"name": "Jimmy Neasham", "image": AppImages.profile1, "unread": 0},
-      {"name": "Jimmy Neasham", "image": AppImages.profile1, "unread": 0},
-      {"name": "Jimmy Neasham", "image": AppImages.profile1, "unread": 0},
-      {"name": "Jimmy Neasham", "image": AppImages.profile1, "unread": 0},
+      {"name": "Talent Lodge", "image": AppImages.talent, "unread": 5},
+      {"name": "Aapeli Abbe", "image": AppImages.abbe, "unread": 0},
+      {"name": "Albert", "image": AppImages.albert, "unread": 0},
+      {"name": "Harry Brook", "image": AppImages.brook, "unread": 0},
+      {"name": "Jimmy Neasham", "image": AppImages.nesham, "unread": 0},
+      {"name": "Jimmy Neasham", "image": AppImages.nesham, "unread": 0},
+      {"name": "Jimmy Neasham", "image": AppImages.nesham, "unread": 0},
+      {"name": "Jimmy Neasham", "image": AppImages.nesham, "unread": 0},
+      {"name": "Jimmy Neasham", "image": AppImages.nesham, "unread": 0},
     ];
     return Scaffold(
       appBar: CustomAppbar(
         text: Constants.chat,
+        showBackButton: false,
         onTap: () {},
         height: 110,
       ),

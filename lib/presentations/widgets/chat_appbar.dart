@@ -2,24 +2,24 @@ import 'package:delievery_app/core/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
-  final String text;
-  final VoidCallback? onTap; // Made optional
+class ChattAppbar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+  final String userImage;
+  final VoidCallback onBackPressed;
   final Color backgroundColor;
   final Color iconColor;
   final Color textColor;
   final double height;
-  final bool showBackButton; // New parameter to control visibility
 
-  const CustomAppbar({
+  const ChattAppbar({
     super.key,
-    required this.text,
-    this.onTap,
+    required this.title,
+    required this.userImage,
+    required this.onBackPressed,
     this.backgroundColor = AppColors.primary,
     this.iconColor = Colors.black,
     this.textColor = AppColors.white,
     this.height = kToolbarHeight,
-    this.showBackButton = true, // Default to true for backward compatibility
   });
 
   @override
@@ -36,45 +36,50 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       child: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 358,
-              height: 48,
-              margin: const EdgeInsets.only(top: 12, left: 16, right: 16),
-              child: Row(
-                children: [
-                  if (showBackButton) // Only show if enabled
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 48,
+                child: Row(
+                  children: [
                     Container(
                       width: 32,
                       height: 32,
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: AppColors.white,
                         shape: BoxShape.circle,
                       ),
                       child: IconButton(
                         icon: Icon(Icons.arrow_back, size: 18, color: iconColor),
-                        onPressed: onTap ?? () => Navigator.pop(context), // Default pop behavior
+                        onPressed: onBackPressed,
                         padding: EdgeInsets.zero,
                       ),
                     ),
-                  Expanded(
-                    child: Center(
+                    const SizedBox(width: 10),
+                    CircleAvatar(
+                      backgroundImage: AssetImage(userImage),
+                      radius: 20,
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
                       child: Text(
-                        text,
+                        title,
                         style: GoogleFonts.poppins(
                           color: textColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

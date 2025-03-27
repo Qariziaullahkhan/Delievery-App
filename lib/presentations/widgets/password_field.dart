@@ -61,23 +61,23 @@ class MyPasswordField extends StatelessWidget {
           obscuringCharacter: '*',
           decoration: InputDecoration(
             prefixIcon: prefixIcon != null
-                ? Icon(prefixIcon, color: borderColor ?? Colors.blue)
+                ? Icon(prefixIcon, color: borderColor ?? Colors.white)
                 : null,
             suffixIcon: isPassword
-                ? IconButton(
-                  color: AppColors.secondry,
-                  
-                    icon: Icon(
-                      
-                      passwordController.isPasswordVisible.value
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: borderColor ?? Colors.white,
-                    ),
-                    onPressed: passwordController.togglePasswordVisibility,
-                  )
-                : null,
-            fillColor: fillColor ?? Colors.grey[200],
+    ? IconButton(
+        color: passwordController.isPasswordVisible.value 
+            ? AppColors.secondry 
+            : AppColors.primary,
+        icon: Icon(
+          passwordController.isPasswordVisible.value
+              ? Icons.visibility
+              : Icons.visibility_off,
+          color: borderColor ?? Colors.white,
+        ),
+        onPressed: passwordController.togglePasswordVisibility,
+      )
+    : null,
+            fillColor: fillColor ?? Colors.white,
             filled: true,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(width: 1, color: borderColor ?? Colors.white),

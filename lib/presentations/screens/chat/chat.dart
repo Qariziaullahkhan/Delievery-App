@@ -1,5 +1,9 @@
 import 'package:delievery_app/core/app_colors.dart';
+import 'package:delievery_app/domain/controllers/chat_controller.dart';
+import 'package:delievery_app/presentations/widgets/chat_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class ChatScreen extends StatelessWidget {
   final String userName;
@@ -12,72 +16,79 @@ class ChatScreen extends StatelessWidget {
   });
 
   @override
+
   Widget build(BuildContext context) {
+    final ChatController chatController = Get.put(ChatController());
+
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Row(
-          children: [
-            CircleAvatar(
-              backgroundImage: AssetImage(userImage),
-              radius: 20,
-            ),
-            const SizedBox(width: 10),
-            Text(userName),
-          ],
-        ),
-      ),
+    appBar: ChattAppbar(
+      title: userName,
+      userImage: userImage,
+      onBackPressed: () => Navigator.pop(context),
+      backgroundColor: AppColors.primary,
+      iconColor: AppColors.primary,
+      textColor: Colors.white,
+    ),
       body: Column(
         children: [
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(16),
-              children: const [
-                // Sample received message
-                // Align(
-                //   alignment: Alignment.centerLeft,
-                //   child: Container(
-                //     padding: EdgeInsets.all(12),
-                //     margin: EdgeInsets.only(bottom: 8),
-                //     decoration: BoxDecoration(
-                //       color: Color(0xFFE0E0E0), // Fixed issue
-                //       borderRadius: BorderRadius.only(
-                //         topRight: Radius.circular(16),
-                //         bottomRight: Radius.circular(16),
-                //         bottomLeft: Radius.circular(16),
-                //       ),
-                //     ),
-                //     child: Text("Hello, I didn't receive my product yet!"),
-                //   ),
-                // ),
-
-                // // Sample sent message
-                // Align(
-                //   alignment: Alignment.centerRight,
-                //   child: Container(
-                //     padding: EdgeInsets.all(12),
-                //     margin: EdgeInsets.only(bottom: 8),
-                //     decoration: BoxDecoration(
-                //       color: Colors.blue,
-                //       borderRadius: BorderRadius.only(
-                //         topLeft: Radius.circular(16),
-                //         bottomRight: Radius.circular(16),
-                //         bottomLeft: Radius.circular(16),
-                //       ),
-                //     ),
-                //     child: Text(
-                //       "We'll check and get back to you soon",
-                //       style: TextStyle(color: Colors.white),
-                //     ),
-                //   ),
-                // ),
-              ],
+            child: Obx(
+              () => ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: chatController.messages.length,
+                itemBuilder: (context, index) {
+                  final message = chatController.messages[index];
+                  return Align(
+                    alignment: message.isMe
+                        ? Alignment.centerRight
+                        : Alignment.centerLeft,
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 8),
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: message.isMe
+                            ? AppColors.primary
+                            : const Color(0xFFE0E0E0),
+                        borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(20),
+                          topRight: const Radius.circular(20),
+                          bottomLeft: message.isMe
+                              ? const Radius.circular(20)
+                              : Radius.zero,
+                          bottomRight: message.isMe
+                              ? Radius.zero
+                              : const Radius.circular(20),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            message.text,
+                            style: TextStyle(
+                              color:
+                                  message.isMe ? Colors.white : Colors.black87,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            DateFormat('hh:mm a').format(message.time),
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: message.isMe
+                                  ? Colors.white70
+                                  : Colors.grey[600],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
-          // Message input field
+          // Your existing message input field
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
@@ -85,16 +96,17 @@ class ChatScreen extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   blurRadius: 12,
-                  offset: Offset(0, -4),
-                  spreadRadius: 0
-                )
-              ]
+                  offset: const Offset(0, -4),
+                  spreadRadius: 0,
+                ),
+              ],
             ),
             padding: const EdgeInsets.all(8),
             child: Row(
               children: [
                 Expanded(
                   child: TextField(
+                    controller: chatController.messageController,
                     decoration: InputDecoration(
                       hintText: "Type a message...",
                       border: OutlineInputBorder(
@@ -105,7 +117,8 @@ class ChatScreen extends StatelessWidget {
                         vertical: 12,
                       ),
                       prefixIcon: Container(
-                        margin: const EdgeInsets.only(top: 6,left: 11,right: 24,bottom: 7),
+                        margin: const EdgeInsets.only(
+                            top: 6, left: 11, right: 24, bottom: 7),
                         child: CircleAvatar(
                           radius: 20,
                           backgroundColor: AppColors.secondry,
@@ -120,7 +133,8 @@ class ChatScreen extends StatelessWidget {
                         ),
                       ),
                       suffixIcon: Container(
-                        margin: const EdgeInsets.only(right: 7,top: 6,bottom: 7),
+                        margin: const EdgeInsets.only(
+                            right: 7, top: 6, bottom: 7),
                         child: CircleAvatar(
                           radius: 20,
                           backgroundColor: AppColors.secondry,
@@ -128,18 +142,17 @@ class ChatScreen extends StatelessWidget {
                             padding: EdgeInsets.zero,
                             icon: const Icon(Icons.send, size: 20),
                             color: Colors.white,
-                            onPressed: () {
-                              // Handle send button press
-                            },
+                            onPressed: chatController.sendMessage,
                           ),
                         ),
                       ),
                     ),
+                    onSubmitted: (text) => chatController.sendMessage(),
                   ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
