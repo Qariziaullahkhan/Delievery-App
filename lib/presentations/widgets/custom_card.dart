@@ -11,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomCard extends StatelessWidget {
   final String name;
   final String email;
+  final double? height;
   final String description;
   final String size;
   final String weight;
@@ -18,18 +19,21 @@ class CustomCard extends StatelessWidget {
   final String pickUpLocation;
   final String deliveryLocation;
   final List<String> images;
+  final bool showButton; // Add this parameter
 
   const CustomCard({
     super.key,
     required this.name,
     required this.email,
     required this.description,
+    this.height,
     required this.size,
     required this.weight,
     required this.quantity,
     required this.pickUpLocation,
     required this.deliveryLocation,
     required this.images,
+    this.showButton = true, // Default to true
   });
 
   @override
@@ -37,7 +41,7 @@ class CustomCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(left: 16, right: 16),
       width: double.infinity,
-      height: 522,
+      height: height,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -255,14 +259,17 @@ class CustomCard extends StatelessWidget {
             }).toList(),
           ),
           SizedBox(height: 10),
-          MyButton(
+          // Conditionally show the button
+          if (showButton)
+            MyButton(
               onPressed: () {
                 Get.to(() => Offer());
               },
               width: 160,
               height: 40,
               backgroundColor: AppColors.primary,
-              text: "Make an offer")
+              text: "Make an offer",
+            ),
         ],
       ),
     );

@@ -38,16 +38,17 @@ class MessageScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                Expanded(
-                  child: SearchField(
-                    controller: TextEditingController(),
-                    fillColor: Colors.white,
-                    searchcolor: AppColors.white,
-                    borderColor: AppColors.white,
-                    textColor: Colors.white,
-                    hintText: "Search",
-                    onTap: () {},
-                  ),
+                SearchField(
+                  controller: TextEditingController(),
+                  fillColor: Colors.white,
+                  searchcolor: AppColors.white,
+                  borderColor: AppColors.white,
+                  textColor: Colors.white,
+                  hintextcolors: AppColors.lightGrey,
+                  iconcolor: AppColors.lightGrey,
+                  hintText: "Search",
+                  borderRadius: BorderRadius.circular(15),
+                  onTap: () {},
                 ),
               ],
             ),

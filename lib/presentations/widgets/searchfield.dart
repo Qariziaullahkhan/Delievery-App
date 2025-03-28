@@ -10,6 +10,9 @@ class SearchField extends StatelessWidget {
   final String hintText;
   final Color? searchcolor;
   final VoidCallback? onTap;
+  final BorderRadius? borderRadius;
+  final Color? hintextcolors;
+  final Color? iconcolor;
 
   const SearchField({
     super.key,
@@ -20,6 +23,9 @@ class SearchField extends StatelessWidget {
     required this.hintText,
     this.searchcolor,
     this.onTap,
+    this.borderRadius,
+    this.hintextcolors,
+    this.iconcolor,
   });
 
   @override
@@ -29,8 +35,9 @@ class SearchField extends StatelessWidget {
         height: 44,
         width: 53,
         decoration: BoxDecoration(
-                color: searchcolor ?? AppColors.searchcolor, // Gray border color instead of white
-          borderRadius: BorderRadius.circular(12),
+          color: searchcolor ??
+              AppColors.searchcolor, // Gray border color instead of white
+          borderRadius: borderRadius ?? BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
               spreadRadius: 0,
@@ -43,30 +50,33 @@ class SearchField extends StatelessWidget {
           controller: controller,
           decoration: InputDecoration(
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius:borderRadius ?? BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: searchcolor ?? AppColors.searchcolor, // Gray border color instead of white
+                color: searchcolor ??
+                    AppColors.searchcolor, // Gray border color instead of white
               ),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: borderRadius ?? BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: searchcolor ?? AppColors.searchcolor, // Gray border color instead of white
+                color: searchcolor ??
+                    AppColors.searchcolor, // Gray border color instead of white
               ),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: borderRadius ?? BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: searchcolor ?? AppColors.searchcolor, // Gray border color instead of white
+                color: searchcolor ??
+                    AppColors.searchcolor, // Gray border color instead of white
               ),
             ),
             prefixIcon: Icon(
               Icons.search,
-              color: AppColors.secondry,
+              color: iconcolor ?? AppColors.secondry,
             ),
             hintText: hintText,
             hintStyle: GoogleFonts.poppins(
-              color: Color(0xFFF6F5F8),
+              color: hintextcolors ?? AppColors.white,
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
