@@ -71,7 +71,7 @@ class ViewTask extends StatelessWidget {
           // Fixed Content (Top Section)
           Container(
             width: double.infinity,
-            height: Responsive.height(0.3),
+            height: Responsive.height(0.25),
             decoration: BoxDecoration(
               color: AppColors.primary,
               borderRadius: const BorderRadius.only(

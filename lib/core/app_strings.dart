@@ -44,6 +44,7 @@ class Constants {
   static const String send = "Send";
   static const String confirm = "Confirm";
   static const String delete = "Delete";
+  static const String task = "Task";
   static const String buyer = "Rate Buyer";
   static const String markcomplete = "Mark as complete";
   static const String markdelivered = "Mark as delivered";
@@ -63,4 +64,5 @@ class Constants {
       "Tejinera jetrer än minidator att muhöde, lall sojåk i nenåhet. Gykatt doväll. Oling gigasaskap tänålig, den höväna. Kontranigyr jek tägen, gäsm plus triage om yninas. Mikrosamma euktig. On virad i sosk pseudostat dekase kapepreben stenolanigon. "
       "Prer dejev. Mjuta nåk i fol önar bedåliga kostymrasist. Multins vingen cookie missmatchning självkarantän trir. Difägon prenydelig alltså sasam i lalig för att soska presiv dangen. Odoren pöns vir i saspegt. Dåsk nissade nid nism delingar de isona huruvida növänat. "
       "Dasm triren näska bisk, fast nengar nide ifall kara odon. Robotjournalistik fäling. Heterogt dinyna då tigt lalogi mikrojerade lavänera. Decint resk eftersom vitres us den cosplay. Reagt apometer. Prenera saligen gäjeligen till viligen didess, hypogt, den pör tiren.";
+
 }

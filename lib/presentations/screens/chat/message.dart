@@ -109,7 +109,7 @@ class MessageScreen extends StatelessWidget {
                       ],
                     ),
                     onTap: () {
-                       Get.to(
+                      Get.to(
                         () => ChatScreen(
                           userName: message["name"],
                           userImage: message["image"],

@@ -1,8 +1,12 @@
+import 'package:delievery_app/core/app_colors.dart';
 import 'package:delievery_app/core/app_strings.dart';
+import 'package:delievery_app/presentations/screens/task/task.dart';
 import 'package:delievery_app/presentations/widgets/custom_appbar.dart';
+import 'package:delievery_app/presentations/widgets/custom_button.dart';
 import 'package:delievery_app/presentations/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyTask extends StatelessWidget {
   const MyTask({super.key});
@@ -48,17 +52,94 @@ class MyTask extends StatelessWidget {
         ],
       },
     ];
-  
+    final selectedButton = 0.obs; // Using GetX for state management
+
     return Scaffold(
       appBar: CustomAppbar(
-        text: Constants.mytasks, 
-        onTap: () => Get.back(), 
+        text: Constants.mytasks,
+        onTap: () => Get.back(),
         height: 110,
         showBackButton: false,
       ),
-      body: Column(  // Add Column as parent
+      body: Column(
+        // Add Column as parent
         children: [
-          Expanded(  // Now Expanded has a proper Flex parent (Column)
+          Obx(() => Container(
+                margin: const EdgeInsets.only(
+                    left: 53, right: 53, top: 24, bottom: 12),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                width: double.infinity,
+                height: 37,
+                child: Row(
+                  children: [
+                    // My Added Tasks Button
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () => selectedButton.value = 0,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: selectedButton.value == 0
+                                ? AppColors.primary
+                                : AppColors.white,
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              bottomLeft: Radius.circular(20),
+                            ),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            'My Added tasks',
+                            style: GoogleFonts.poppins(
+                              color: selectedButton.value == 0
+                                  ? Colors.white
+                                  : AppColors.lightGrey,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // My Applied Tasks Button
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () => selectedButton.value = 1,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: selectedButton.value == 1
+                                ? AppColors.primary
+                                : AppColors.white,
+                            borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            'My Applied tasks',
+                            style: GoogleFonts.poppins(
+                              color: selectedButton.value == 1
+                                  ? Colors.white
+                                  : AppColors.lightGrey,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+
+          //mybutton
+
+          Expanded(
+            // Now Expanded has a proper Flex parent (Column)
             child: ListView.builder(
               padding: EdgeInsets.symmetric(vertical: 10),
               shrinkWrap: true,
@@ -69,6 +150,7 @@ class MyTask extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: CustomCard(
+                    onTap: () => Get.to(() => TaskDetailsScreen()),
                     height: 468,
                     name: data["name"],
                     email: data["email"],
@@ -79,7 +161,8 @@ class MyTask extends StatelessWidget {
                     pickUpLocation: data["pickUpLocation"],
                     deliveryLocation: data["deliveryLocation"],
                     images: data["images"],
-                    showButton: false,
+                    
+                    showButton:false,
                   ),
                 );
               },
