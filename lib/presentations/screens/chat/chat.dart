@@ -16,19 +16,18 @@ class ChatScreen extends StatelessWidget {
   });
 
   @override
-
   Widget build(BuildContext context) {
     final ChatController chatController = Get.put(ChatController());
 
     return Scaffold(
-    appBar: ChattAppbar(
-      title: userName,
-      userImage: userImage,
-      onBackPressed: () => Navigator.pop(context),
-      backgroundColor: AppColors.primary,
-      iconColor: AppColors.primary,
-      textColor: Colors.white,
-    ),
+      appBar: ChattAppbar(
+        title: userName,
+        userImage: userImage,
+        onBackPressed: () => Navigator.pop(context),
+        backgroundColor: AppColors.primary,
+        iconColor: AppColors.primary,
+        textColor: Colors.white,
+      ),
       body: Column(
         children: [
           Expanded(
@@ -93,13 +92,13 @@ class ChatScreen extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               color: AppColors.white,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 12,
-                  offset: const Offset(0, -4),
-                  spreadRadius: 0,
-                ),
-              ],
+              // boxShadow: [
+              //   BoxShadow(
+              //     // blurRadius: 12,
+              //     offset: const Offset(0, -4),
+              //     spreadRadius: 0,
+              //   ),
+              // ],
             ),
             padding: const EdgeInsets.all(8),
             child: Row(
@@ -108,9 +107,21 @@ class ChatScreen extends StatelessWidget {
                   child: TextField(
                     controller: chatController.messageController,
                     decoration: InputDecoration(
-                      hintText: "Type a message...",
+                      hintText: "Type your message here !!",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(
+                            color: Colors.white), // ✅ white border
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(
+                            color: Colors.white), // ✅ white border
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(
+                            color: Colors.white), // ✅ white border
                       ),
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 16,
@@ -133,8 +144,8 @@ class ChatScreen extends StatelessWidget {
                         ),
                       ),
                       suffixIcon: Container(
-                        margin: const EdgeInsets.only(
-                            right: 7, top: 6, bottom: 7),
+                        margin:
+                            const EdgeInsets.only(right: 7, top: 6, bottom: 7),
                         child: CircleAvatar(
                           radius: 20,
                           backgroundColor: AppColors.secondry,

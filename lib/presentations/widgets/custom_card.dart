@@ -1,5 +1,6 @@
 import 'package:delievery_app/core/app_colors.dart';
 import 'package:delievery_app/core/app_images.dart';
+import 'package:delievery_app/domain/controllers/carousel_controller.dart';
 import 'package:delievery_app/presentations/screens/task/offer.dart';
 import 'package:delievery_app/presentations/widgets/custom_button.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
@@ -40,6 +41,7 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CarouselControllerX controller = Get.put(CarouselControllerX());
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -241,27 +243,61 @@ class CustomCard extends StatelessWidget {
                 ),
               ),
             ),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 140,
-                autoPlay: true,
-                enlargeCenterPage: true,
-              ),
-              items: images.map((url) {
-                return Container(
-                  width: 326,
-                  height: 140,
-                  margin: EdgeInsets.symmetric(horizontal: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                      image: AssetImage(url), // Use AssetImage here
-                      fit: BoxFit.cover,
-                    ),
+            Stack(
+              children: [
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 140,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    onPageChanged: (index, reason) {
+                      controller.updateIndex(index);
+                    },
                   ),
-                );
-              }).toList(),
+                  items: images.map((url) {
+                    return Container(
+                      width: 326,
+                      height: 140,
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        image: DecorationImage(
+                          image: AssetImage(url),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+
+                // Dots Positioned Above Carousel Images
+                Positioned(
+                  top: 100, // adjust to move it further up or down
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Obx(() {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(images.length, (index) {
+                        return Container(
+                          width: 12.0,
+                          height: 12.0,
+                          margin: EdgeInsets.symmetric(horizontal: 4.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: controller.currentIndex.value == index
+                                ? AppColors.secondry
+                                : AppColors.lightGrey
+                          ),
+                        );
+                      }),
+                    );
+                  }),
+                ),
+              ],
             ),
+
             SizedBox(height: 10),
             // Conditionally show the button
             if (showButton)

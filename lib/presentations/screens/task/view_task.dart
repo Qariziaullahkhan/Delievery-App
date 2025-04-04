@@ -1,6 +1,7 @@
 import 'package:delievery_app/core/app_images.dart';
 import 'package:delievery_app/core/app_strings.dart';
 import 'package:delievery_app/core/app_styles.dart';
+import 'package:delievery_app/domain/controllers/carousel_controller.dart';
 import 'package:delievery_app/domain/controllers/filter_controller.dart';
 import 'package:delievery_app/presentations/screens/profile/profile.dart';
 import 'package:delievery_app/presentations/screens/setting/notification.dart';
