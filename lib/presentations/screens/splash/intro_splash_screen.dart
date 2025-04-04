@@ -14,13 +14,14 @@ class IntroSplashScreen extends StatelessWidget {
     final SplashController splashController = Get.put(SplashController());
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 100, right: 137, top: 393),
-            child: MyText(
-              text: Constants.logo,
-              style: AppStyles.headingStyle,
+            padding: const EdgeInsets.only(left: 100, right: 137, top:350),
+            child: Center(
+              child: MyText(
+                text: Constants.logo,
+                style: AppStyles.headingStyle,
+              ),
             ),
           ),
           

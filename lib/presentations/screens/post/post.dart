@@ -2,7 +2,6 @@ import 'package:delievery_app/core/app_colors.dart';
 import 'package:delievery_app/core/app_strings.dart';
 import 'package:delievery_app/core/app_styles.dart';
 import 'package:delievery_app/presentations/screens/home/home_screen.dart';
-import 'package:delievery_app/presentations/screens/task/view_task.dart';
 import 'package:delievery_app/presentations/widgets/custom_appbar.dart';
 import 'package:delievery_app/presentations/widgets/custom_button.dart';
 import 'package:delievery_app/presentations/widgets/custom_textfield.dart';
@@ -257,7 +256,7 @@ class ItemDetailRow extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
             boxShadow: [
               BoxShadow(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white,
                 blurRadius: 20,
                 spreadRadius: 0,
                 offset: Offset(-4, 5),
