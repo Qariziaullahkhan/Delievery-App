@@ -91,14 +91,8 @@ class ChatScreen extends StatelessWidget {
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: AppColors.white,
-              // boxShadow: [
-              //   BoxShadow(
-              //     // blurRadius: 12,
-              //     offset: const Offset(0, -4),
-              //     spreadRadius: 0,
-              //   ),
-              // ],
+             color: Colors.transparent, // 👈 Background fully removed
+    boxShadow: [], //
             ),
             padding: const EdgeInsets.all(8),
             child: Row(
